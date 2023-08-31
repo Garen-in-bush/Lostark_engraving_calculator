@@ -195,12 +195,14 @@ class Engraving(QWidget):
         elif current_page + 1 > len(self.result):
             self.message('别翻了，没有了')
         else:
-            self.set_jewelries(self.result[current_page+1], current_page+1)
+            self.set_jewelries(self.result[current_page], current_page+1)
 
     def go_target_page(self):
         target_page = int(self.text_page.text())
         if target_page > len(self.result):
-            self.message('睁大你的眼睛看看有多少页')
+            self.message('睁大你的眼睛看看有多少页！')
+        elif target_page < 1:
+            self.message('第一页前面你觉得还有几页？')
         else:
             self.set_jewelries(self.result[target_page-1], target_page)
 

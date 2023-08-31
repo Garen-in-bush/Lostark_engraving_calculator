@@ -29,7 +29,14 @@ def get_jewelry_with_template(target, template):
     jewelry_combinations = list(itertools.combinations_with_replacement(itertools.product(target, repeat=2), 5))
     res = []
     for jewelries in jewelry_combinations:
+        flag = False
         if not check_jewelries_with_template(jewelries, template):
+            continue
+        for item in jewelries:
+            if item[0] == item[1]:
+                flag = True
+                break
+        if flag:
             continue
         res.append(jewelries)
     return res
